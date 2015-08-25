@@ -25,12 +25,10 @@ module ApplicationHelper
 		collectionName = "rubyMongo"
 		outPut.push("Creating collection 'rubyMongo' in admin database")
 		outPut.push(" ")
-		#mongo_client[collectionName].drop # make sure it does not already exist
-		#collection = mongo_client[collectionName]  giving error undefined method `downcase' for {:host=>"27017"}:Hash):
-		# therefore using collection initialization method
-		#collection = Mongo::Collection.new(db, collectionName) giving error ActionView::Template::Error (undefined method `command' for "s1662732":String):
+		mongo_client[collectionName].drop # make sure it does not already exist
+		collection = mongo_client[collectionName]  
 		collection.create
-=begin
+
 		outPut.push("Insert a single document to a collection") 
 		collection.insert_one({ :name => "test1", :value => 1})
 		outPut.push("Inserted {\"name\": \"test1\", \"value\": 1}" )  
@@ -78,7 +76,7 @@ module ApplicationHelper
 		db.drop
 		outPut.push(" ")
 		outPut.push("Test Finished")
-=end
+
 		return outPut
 	end
 end
