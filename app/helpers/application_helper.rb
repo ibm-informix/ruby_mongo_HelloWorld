@@ -4,6 +4,9 @@ module ApplicationHelper
 	# For example, URL = "mongodb://localhost:27017/test"	
 	URL = ""
 	
+	# When deploying to Bluemix, controls whether or not to use SSL
+	USE_SSL = false
+	
 	def runHelloWorld()
 
 		output = Array.new
@@ -21,7 +24,6 @@ module ApplicationHelper
 			logger.info("Using service name " + serviceName)
 			vcap_hash = JSON.parse(ENV['VCAP_SERVICES'])[serviceName]
 			credHash = vcap_hash.first["credentials"]
-			USE_SSL = false
 			if (USE_SSL)
 				mongodb_url = credHash["mongodb_url_ssl"]
 			else
