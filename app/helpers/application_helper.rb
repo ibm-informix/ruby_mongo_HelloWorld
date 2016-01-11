@@ -21,7 +21,12 @@ module ApplicationHelper
 			logger.info("Using service name " + serviceName)
 			vcap_hash = JSON.parse(ENV['VCAP_SERVICES'])[serviceName]
 			credHash = vcap_hash.first["credentials"]
-			mongodb_url = credHash["mongodb_url"]
+			USE_SSL = false
+			if (USE_SSL)
+				mongodb_url = credHash["mongodb_url_ssl"]
+			else
+				mongodb_url = credHash["mongodb_url"]
+			end
 			logger.info("Using mongodb_url " + mongodb_url)
 		else
 			mongodb_url = URL

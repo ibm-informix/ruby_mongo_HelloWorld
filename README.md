@@ -28,6 +28,8 @@ CloudFoundry CLI -  Used to push the application to Bluemix.
 
 Git - Used to download the application.
 
+A locally accessible instance of the IBM Informix database server and the Informix JSON listener
+
 #### Procedure: 
 
 * Step 1: Install Ruby 2.2
@@ -36,10 +38,12 @@ Git - Used to download the application.
 
 * Step 3: cd into the app directory
 
-* Step 4: Run `gem install bundler` to install bundler
+* Step 4: Edit the file app/helpers/application_helper.rb, to set the URL to your Informix JSON listener 
 
-* Step 5: Run `bundler install` to install app dependencies
+* Step 5: Run `gem install bundler` to install bundler
 
-* Step 6: Run `rails server`
+* Step 6: Run `bundler install` to install app dependencies
 
-* Step 7: Access the running app in a browser at http://localhost:3000
+* Step 7: Run `rails server`
+
+* Step 8: Access the running app in a browser at http://localhost:3000
